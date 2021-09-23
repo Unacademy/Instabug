@@ -5,14 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import androidx.fragment.app.FragmentActivity;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.instabug.reactlibrary.RNInstabugReactnativePackage;
 
-public class BaseReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
+public class BaseReactActivity extends FragmentActivity implements DefaultHardwareBackBtnHandler {
 
     private ReactRootView mReactRootView;
     protected static ReactInstanceManager sReactInstanceManager;
@@ -28,6 +30,7 @@ public class BaseReactActivity extends Activity implements DefaultHardwareBackBt
                     .setBundleAssetName("index.android.bundle")
                     .setJSMainModulePath("index")
                     .addPackage(new MainReactPackage())
+                    .addPackage(new RNInstabugReactnativePackage())
                     .setUseDeveloperSupport(BuildConfig.DEBUG)
                     .setInitialLifecycleState(LifecycleState.RESUMED)
                     .build();
