@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+import com.instabug.reactlibrary.RNInstabugReactnativePackage;
 
-public class BaseReactActivity extends Activity implements DefaultHardwareBackBtnHandler {
+public class BaseReactActivity extends AppCompatActivity implements DefaultHardwareBackBtnHandler {
 
     private ReactRootView mReactRootView;
     protected static ReactInstanceManager sReactInstanceManager;
@@ -20,18 +24,7 @@ public class BaseReactActivity extends Activity implements DefaultHardwareBackBt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (sReactInstanceManager == null) {
-            sReactInstanceManager = ReactInstanceManager.builder()
-                    .setApplication(getApplication())
-                    .setCurrentActivity(this)
-                    .setBundleAssetName("index.android.bundle")
-                    .setJSMainModulePath("index")
-                    .addPackage(new MainReactPackage())
-                    .setUseDeveloperSupport(BuildConfig.DEBUG)
-                    .setInitialLifecycleState(LifecycleState.RESUMED)
-                    .build();
-        }
+        sReactInstanceManager = TestApplication.sReactInstanceManager;
     }
 
     protected void startReactView(String componentName) {
