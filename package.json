@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.4",
+    "react-native": "0.69.12",
     "instabug-reactnative": "git+https://github.com/Instabug/Instabug-React-Native.git#snapshot-android/10.9.0.3427-INSD-5904"
   },
   "devDependencies": {
